@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 3948764089,
+  "duration": 3845666492,
   "status": "passed"
 });
 formatter.scenario({
@@ -35,7 +35,7 @@ formatter.step({
 });
 formatter.step({
   "line": 8,
-  "name": "Admin navigate to schedule tab",
+  "name": "Admin navigates to schedule tab",
   "keyword": "Then "
 });
 formatter.step({
@@ -57,53 +57,53 @@ formatter.match({
   "location": "LoginStepDefinition.admin_is_on_login_page()"
 });
 formatter.result({
-  "duration": 3276725115,
+  "duration": 3488848602,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.admin_logs_in_with_credentials()"
 });
 formatter.result({
-  "duration": 9076326656,
+  "duration": 7543030089,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.admin_is_on_home_page()"
 });
 formatter.result({
-  "duration": 166769646,
+  "duration": 122992891,
   "status": "passed"
 });
 formatter.match({
-  "location": "LoginStepDefinition.admin_navigate_to_schedule_tab()"
+  "location": "LoginStepDefinition.admin_navigates_to_schedule_tab()"
 });
 formatter.result({
-  "duration": 10058641336,
+  "duration": 8083490699,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.admin_Adds_New_Employee()"
 });
 formatter.result({
-  "duration": 15891616480,
+  "duration": 15239598033,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.user_email_is_check_for_invite()"
 });
 formatter.result({
-  "duration": 12738689787,
+  "duration": 14191799158,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.user_signs_up_as_employee()"
 });
 formatter.result({
-  "duration": 11901014992,
+  "duration": 10634955745,
   "status": "passed"
 });
 formatter.after({
-  "duration": 928209045,
+  "duration": 776152671,
   "status": "passed"
 });
 });
