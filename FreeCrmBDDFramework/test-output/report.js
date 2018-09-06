@@ -7,7 +7,7 @@ formatter.feature({
   "keyword": "Feature"
 });
 formatter.before({
-  "duration": 5959741661,
+  "duration": 3193320934,
   "status": "passed"
 });
 formatter.scenario({
@@ -57,53 +57,53 @@ formatter.match({
   "location": "LoginStepDefinition.admin_is_on_login_page()"
 });
 formatter.result({
-  "duration": 7881848587,
+  "duration": 3305340203,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.admin_logs_in_with_credentials()"
 });
 formatter.result({
-  "duration": 11316533874,
+  "duration": 9047369444,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.admin_is_on_home_page()"
 });
 formatter.result({
-  "duration": 113492058,
+  "duration": 136013719,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.admin_navigates_to_schedule_tab()"
 });
 formatter.result({
-  "duration": 7981665199,
+  "duration": 8483588359,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.admin_Adds_New_Employee()"
 });
 formatter.result({
-  "duration": 15530251828,
+  "duration": 15608135026,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.user_email_is_check_for_invite()"
 });
 formatter.result({
-  "duration": 13747711015,
+  "duration": 11793505348,
   "status": "passed"
 });
 formatter.match({
   "location": "LoginStepDefinition.user_signs_up_as_employee()"
 });
 formatter.result({
-  "duration": 18037417057,
+  "duration": 14629844440,
   "status": "passed"
 });
 formatter.after({
-  "duration": 738786576,
+  "duration": 784004912,
   "status": "passed"
 });
 });
