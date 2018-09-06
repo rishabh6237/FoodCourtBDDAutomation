@@ -36,10 +36,6 @@ public class Utility
 	String email;
 	public static Properties propTestcase;
 	
-	public static WebDriverWait getWait(WebDriver driver,int seconds)
-	{
-	return new WebDriverWait(driver,seconds);	
-	}
 	
 	public Utility(WebDriver driver)
     
@@ -58,6 +54,18 @@ public class Utility
 		return email;
 	}
 	
+	/**
+	 * Purpose : Returns a instance of Explicit Web Driver Wait
+	 */
+	public static WebDriverWait getWait(WebDriver driver,int seconds)
+	{
+	return new WebDriverWait(driver,seconds);	
+	}
+	
+	/**
+	 * Purpose : Loads the data that will be used in automation
+	 * @author rish
+	 */
 	public void setPropertyFiles()
 	{
 		
@@ -74,14 +82,17 @@ public class Utility
 	}
 	
 	/**
-	 * Purpose : To get the Properties object for the "Paths.properties" Properties File
-	 * @return propPaths
+	 * Purpose : returns the data property file
 	 * @author rish
 	 */
 	public Properties getPropTestcase(){
 		  return propTestcase;
 	}
 	
+	/**
+	 * Purpose : returns chrome driver
+	 * @author rish
+	 */
 	public WebDriver getChromeDriver()
 	{
 	
@@ -96,6 +107,11 @@ public class Utility
 		
 		return driver;
 	}
+	
+	/**
+	 * Purpose : returns the invited URL from the email account
+	 * @author rish
+	 */
 	
 	public String fetchInviteURL(String email ,String password,String emailHeaderContent) throws IOException
 	{
@@ -115,30 +131,27 @@ public class Utility
 
 				Folder inbox = store.getFolder("inbox");
 				inbox.open(Folder.READ_WRITE);
-				int messageCount = inbox.getMessageCount();
-
-				//System.out.println("Total Messages:- " + messageCount);
-
+	
 				Message[] messages = inbox.getMessages();
-				//System.out.println("------------------------------");
-				for (int i = (messages.length-1); i > (messages.length-4); i--) {
-					//System.out.println("Mail Subject:- " + messages[i].getSubject()); 
-					
+				for (int i = (messages.length-1); i > (messages.length-4); i--) 
+				
+				{	
 					if(messages[i].getSubject().contains(emailHeaderContent))
-					{
-					String content = getTextFromMessage(messages[i]);
+				
+					 {
+					    String content = getTextFromMessage(messages[i]);
 						
-					int loc = content.indexOf("https:");
-					String url = content.substring(loc);
+					    int loc = content.indexOf("https:");
+					    String url = content.substring(loc);
 					
 					
-					loc = url.indexOf(" ");
-					url = url.substring(0,loc);
-					System.out.println("URL "+url);
-					inviteURL=url;
-					break;
+					    loc = url.indexOf(" ");
+					    url = url.substring(0,loc);
+					    System.out.println("URL "+url);
+					    inviteURL=url;
+					    break;
 					
-					}
+					 }
 				}
 				 
 				inbox.close(true);
@@ -146,7 +159,9 @@ public class Utility
 				
 				
 
-			} catch (Exception e) {
+			}
+			catch (Exception e)
+			{
 				e.printStackTrace();
 			}
 			
@@ -154,19 +169,34 @@ public class Utility
 		
 	}
 	
-	private String getTextFromMessage(Message message) throws IOException, MessagingException {
+	
+	/**
+	 * Purpose : returns the mail body content from mail
+	 * @author rish
+	 */
+	
+	private String getTextFromMessage(Message message) throws IOException, MessagingException 
+	{
 	    String result = "";
-	    if (message.isMimeType("text/plain")) {
+	    if (message.isMimeType("text/plain"))
+	    {
 	        result = message.getContent().toString();
-	    } else if (message.isMimeType("multipart/*")) {
+	    }
+	    else if (message.isMimeType("multipart/*")) 
+	    {
 	        MimeMultipart mimeMultipart = (MimeMultipart) message.getContent();
 	        result = getTextFromMimeMultipart(mimeMultipart);
 	    }
 	    return result;
 	}
 
-	private String getTextFromMimeMultipart(
-	        MimeMultipart mimeMultipart) throws IOException, MessagingException {
+	/**
+	 * Purpose : used by getTextFromMessage to handle MimeMultipart Mails
+	 * @author rish
+	 */
+	
+	private String getTextFromMimeMultipart(MimeMultipart mimeMultipart) throws IOException, MessagingException 
+	{
 
 	    int count = mimeMultipart.getCount();
 	    if (count == 0)
@@ -175,27 +205,44 @@ public class Utility
 	    if (multipartAlt)
 	        return getTextFromBodyPart(mimeMultipart.getBodyPart(count - 1));
 	    String result = "";
-	    for (int i = 0; i < count; i++) {
+	    for (int i = 0; i < count; i++) 
+	    {
 	        BodyPart bodyPart = mimeMultipart.getBodyPart(i);
 	        result += getTextFromBodyPart(bodyPart);
 	    }
 	    return result;
 	}
 
-	private String getTextFromBodyPart(
-	        BodyPart bodyPart) throws IOException, MessagingException {
+	/**
+	 * Purpose : used by getTextFromMimeMultipart
+	 * @author rish
+	 */
+	
+	private String getTextFromBodyPart(BodyPart bodyPart) throws IOException, MessagingException 
+	{
 
 	    String result = "";
-	    if (bodyPart.isMimeType("text/plain")) {
+	    if (bodyPart.isMimeType("text/plain")) 
+	    {
 	        result = (String) bodyPart.getContent();
-	    } else if (bodyPart.isMimeType("text/html")) {
+	    }
+	    else if (bodyPart.isMimeType("text/html")) 
+	    {
 	        String html = (String) bodyPart.getContent();
 	        result = org.jsoup.Jsoup.parse(html).text();
-	    } else if (bodyPart.getContent() instanceof MimeMultipart){
+	    }
+	    else if (bodyPart.getContent() instanceof MimeMultipart)
+	    {
 	        result = getTextFromMimeMultipart((MimeMultipart)bodyPart.getContent());
 	    }
 	    return result;
 	}
+	
+	
+	/**
+	 * Purpose : used to read the current count value that will be used to create the email id
+	 * @author rish
+	 */
 	
 	public int getFileData()
 
@@ -225,6 +272,10 @@ public class Utility
 		return Integer.parseInt(count);
 	}
 	
+	/**
+	 * Purpose : used to write count value that will be used to create the email id in the next iteration
+	 * @author rish
+	 */
 	public void writeFile(String value)
 	{
 	    File fileToBeModified = new File(System.getProperty("user.dir")+File.separator+"resources"+File.separator+"Count.txt");    
@@ -257,7 +308,10 @@ public class Utility
 	    }
 	}
 
-	
+	/**
+	 * Purpose : used to take screenshot of the screen in case there is any failure
+	 * @author rish
+	 */
 	public void takeScreenShot(WebDriver driver) throws Exception
 	{
 		
