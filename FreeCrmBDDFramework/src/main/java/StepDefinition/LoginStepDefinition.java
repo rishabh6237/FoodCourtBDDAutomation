@@ -71,8 +71,8 @@ public class LoginStepDefinition
 		
 	}
 
-	@Then("^Admin navigate to schedule tab$")
-	public void admin_navigate_to_schedule_tab() throws InterruptedException 
+	@Then("^Admin navigates to schedule tab$")
+	public void admin_navigates_to_schedule_tab() throws InterruptedException 
 	{
 		//Admin goes to schedule tab which is then verified 
 		 objHome.ClickScheduleTab();
